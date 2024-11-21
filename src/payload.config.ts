@@ -12,6 +12,7 @@ import { env } from '@/env.mjs'
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 import nodemailer from 'nodemailer'
 import { createSESSMTPPassword } from "@/utilities/smtp"
+import { Contact } from "@/globals/Contact"
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -24,6 +25,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Pages],
+  globals: [Contact],
   editor: lexicalEditor(),
   secret: env.PAYLOAD_SECRET,
   typescript: {
@@ -67,4 +69,8 @@ export default buildConfig({
       bucket: env.S3_BUCKET,
     }),
   ],
+  graphQL: {
+    schemaOutputFile: path.resolve(dirname, "schema.graphql"),
+    disablePlaygroundInProduction: false,
+  },
 })
