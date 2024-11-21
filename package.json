@@ -5,11 +5,13 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "prebuild": "pnpm run generate:graphQLSchema && pnpm run generate:types",
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
     "generate:importmap": "cross-env NODE_ENV=CI NODE_OPTIONS=--no-deprecation payload generate:importmap",
-    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "generate:types": "cross-env NODE_ENV=CI NODE_OPTIONS=--no-deprecation payload generate:types",
+    "generate:graphQLSchema": "cross-env NODE_ENV=CI NODE_OPTIONS=--no-deprecation payload-graphql generate:schema",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
@@ -34,6 +36,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@payloadcms/graphql": "^3.0.2",
     "@types/node": "^22.5.4",
     "@types/nodemailer": "^6.4.17",
     "@types/react": "npm:types-react@19.0.0-rc.1",
