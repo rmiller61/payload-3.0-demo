@@ -4,8 +4,9 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
+import { Users } from '@/collections/Users'
+import { Media } from '@/collections/Media'
+import { Pages } from '@/collections/Pages'
 import { s3Storage } from '@payloadcms/storage-s3'
 import { env } from '@/env.mjs'
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
@@ -22,7 +23,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Pages],
   editor: lexicalEditor(),
   secret: env.PAYLOAD_SECRET,
   typescript: {
