@@ -43,3 +43,5 @@ next-env.d.ts
 /media
 
 .pnpm-store
+
+src/payload-types.ts

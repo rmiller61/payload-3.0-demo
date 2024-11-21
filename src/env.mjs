@@ -3,7 +3,7 @@ import { z } from "zod"
 
 export const env = createEnv({
   server: {
-    NODE_ENV: z.enum(["development", "test", "production"]),
+    NODE_ENV: z.enum(["development", "test", "production", "CI"]),
     DATABASE_URI: z.string(),
     PAYLOAD_SECRET: z.string(),
     S3_ACCESS_KEY_ID: z.string(),
