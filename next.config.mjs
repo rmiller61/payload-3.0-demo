@@ -1,5 +1,5 @@
 import { withPayload } from '@payloadcms/next/withPayload'
-import "./env.mjs"
+import "./src/env.mjs"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
